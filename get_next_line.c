@@ -69,7 +69,7 @@ char	*fake_join(char *s1, char *s2)
 	}
 	while (s2[j])
 	{
-		str[i + j] = s1[j];
+		str[i + j] = s2[j];
 		j++;
 	}
 	str[i + j] = '\0';
