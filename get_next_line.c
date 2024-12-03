@@ -10,6 +10,7 @@ char	*get_next_line(int fd)
 	static char	*buff;
 	char		*line;
 	char		**tab;
+	int			r;
 
 	line = NULL;
 	while (1)
@@ -19,9 +20,10 @@ char	*get_next_line(int fd)
 			buff = malloc((size_t)BUFFER_SIZE + 1);
 			if (buff == NULL)
 				return (NULL);
-			buff[BUFFER_SIZE] = '\0';
-			if (read(fd, buff, BUFFER_SIZE) <= 0)
+			r = read(fd, buff, BUFFER_SIZE);
+			if (r <= 0)
 				return (free(buff), buff = NULL, NULL);
+			buff[r] = '\0';
 		}
 		else
 		{
@@ -94,4 +96,25 @@ char	**fake_split(char *str)
 		return (tab[1] = NULL, tab);
 	tab[1] = ft_strdup(ptr);
 	return (tab);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	hh;
+	unsigned char	*p;
+
+	hh = (unsigned char)c;
+	p = (unsigned char *)b;
+	while (len > 0)
+	{
+		*p = hh;
+		p++;
+		len--;
+	}
+	return (b);
 }

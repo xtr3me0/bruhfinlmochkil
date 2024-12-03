@@ -10,7 +10,7 @@
 #include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 22
+#  define BUFFER_SIZE 6
 # endif
 char	*get_next_line(int fd);
 char    *ft_strdup(const char *s1);
@@ -21,4 +21,6 @@ char    **fake_split(char *str);
 char    *ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+void    *ft_memset(void *b, int c, size_t len);
+void    ft_bzero(void *s, size_t n);
 #endif
